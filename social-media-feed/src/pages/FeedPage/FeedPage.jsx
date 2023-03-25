@@ -31,8 +31,12 @@ const FeedPage = () => {
         (post) =>
           (post.username.includes(searchString.get("search")) ||
             post.text.includes(searchString.get("search"))) && (
-            <Link key={post.id} to={post.id.toString()}>
-              <Card className={classes.feedCard} sx={{ maxWidth: 345 }}>
+            <Link
+              key={post.id}
+              to={post.id.toString()}
+              state={{ search: searchString.get("search") }}
+            >
+              <Card className={classes.feedCard}>
                 <CardMedia className={classes.feedCardImg} image={post.img} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
