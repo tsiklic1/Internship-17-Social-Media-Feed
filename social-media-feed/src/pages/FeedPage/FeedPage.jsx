@@ -8,39 +8,43 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useSearchParams,
+  useNavigate,
+} from "react-router-dom";
 import classes from "./index.module.css";
 import { useEffect } from "react";
 
 const FeedPage = () => {
   const [searchString, setSearchString] = useSearchParams();
+  const navigate = useNavigate();
   console.log("feed page search string", searchString.get("search"));
-
-  // useEffect(() => {
-  //   if
-  // }, [searchString]);
 
   return (
     <div className={classes.feedPageWrapper}>
-      {posts.map((post) =>
-        post.username.includes(searchString.get("search")) ? (
-          <Link to={post.id.toString()}>
-            <Card key={post.id} sx={{ maxWidth: 345 }}>
-              <CardMedia sx={{ height: 140 }} image={post.img} />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {post.username}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {post.text}
-                </Typography>
-              </CardContent>
-              {/* <CardActions>
-                <Button size="small">Share</Button>
-              </CardActions> */}
-            </Card>
-          </Link>
-        ) : null
+      <Typography variant="h1" component="h1">
+        Posts:
+      </Typography>
+      {posts.map(
+        (post) =>
+          (post.username.includes(searchString.get("search")) ||
+            post.text.includes(searchString.get("search"))) && (
+            <Link key={post.id} to={post.id.toString()}>
+              <Card className={classes.feedCard} sx={{ maxWidth: 345 }}>
+                <CardMedia className={classes.feedCardImg} image={post.img} />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {post.username}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {post.text}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          )
       )}
     </div>
   );
