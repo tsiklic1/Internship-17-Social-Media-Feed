@@ -10,10 +10,15 @@ import {
 
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import classes from "./index.module.css";
+import { useEffect } from "react";
 
 const FeedPage = () => {
   const [searchString, setSearchString] = useSearchParams();
   console.log("feed page search string", searchString.get("search"));
+
+  // useEffect(() => {
+  //   if
+  // }, [searchString]);
 
   return (
     <div className={classes.feedPageWrapper}>
@@ -30,11 +35,9 @@ const FeedPage = () => {
                   {post.text}
                 </Typography>
               </CardContent>
-              <CardActions>
-                {/* <Link to={post.id.toString()}> */}
+              {/* <CardActions>
                 <Button size="small">Share</Button>
-                {/* </Link> */}
-              </CardActions>
+              </CardActions> */}
             </Card>
           </Link>
         ) : null
