@@ -43,6 +43,9 @@ const FeedPage = () => {
                     {post.username}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
+                    {post.timestamp}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
                     {post.text}
                   </Typography>
                 </CardContent>
