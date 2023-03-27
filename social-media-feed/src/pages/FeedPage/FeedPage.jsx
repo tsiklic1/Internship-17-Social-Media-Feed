@@ -1,25 +1,11 @@
 import posts from "../../posts.json";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-import {
-  Link,
-  useParams,
-  useSearchParams,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import classes from "./index.module.css";
-import { useEffect } from "react";
 
 const FeedPage = () => {
   const [searchString, setSearchString] = useSearchParams();
-  const navigate = useNavigate();
   console.log("feed page search string", searchString.get("search"));
 
   return (

@@ -1,15 +1,13 @@
 import { Input, Typography, Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./index.module.css";
 const HeaderPage = () => {
   const [searchString, setSearchString] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // setSearchParams({ search: searchString });
     navigate(`/feed?search=${searchString}`);
   };
 
